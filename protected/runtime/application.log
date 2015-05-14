@@ -1,0 +1,11 @@
+2013/05/27 10:51:10 [error] [php] include(ControllerBase.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (D:\xampp\htdocs\yii\framework\YiiBase.php:396)
+Stack trace:
+#0 D:\xampp\htdocs\workshift\protected\controllers\SiteController.php(4): spl_autoload_call()
+#1 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(396): require()
+#2 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(322): CWebApplication->createController()
+#3 D:\xampp\htdocs\yii\framework\web\CWebApplication.php(121): CWebApplication->runController()
+#4 D:\xampp\htdocs\yii\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#5 D:\xampp\htdocs\workshift\index.php(13): CWebApplication->run()
+REQUEST_URI=/workshift/index.php?r=site/login
+in D:\xampp\htdocs\workshift\protected\controllers\SiteController.php (4)
+in D:\xampp\htdocs\workshift\index.php (13)

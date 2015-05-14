@@ -1,0 +1,43 @@
+SELECT t.user_id, user.username AS Uname, t.checkin_date, UNIX_TIMESTAMP(t.checkin_date),  t.start_time, t.end_time, sum( t.end_time - t.start_time ) AS sum_time, t.holiday_type
+FROM `checkin_dairy` AS t
+INNER JOIN user ON user.id = t.user_id
+WHERE substr( t.checkin_date, 4, 2 ) =3
+AND substr( t.checkin_date, 7, 4 ) =2013
+AND t.user_id =5
+group by t.checkin_date
+order by t.checkin_date
+
+SELECT t.user_id, user.username AS Uname, t.checkin_date,
+ str_to_date(t.checkin_date, "%d-%m-%Y") as cdate, 
+t.start_time, t.end_time, sum( t.end_time - t.start_time ) AS sum_time, t.holiday_type
+FROM `checkin_dairy` AS t
+INNER JOIN user ON user.id = t.user_id
+WHERE substr( t.checkin_date, 7, 4 ) =2013
+AND t.user_id =5
+AND cdate between '2013-02-26' and '2013-03-25'
+GROUP BY t.checkin_date
+ORDER BY t.checkin_date
+LIMIT 0 , 30
+
+SELECT t.user_id, user.username AS Uname, str_to_date( t.checkin_date, "%d-%m-%Y" ) cdate, t.start_time, t.end_time, sum( t.end_time - t.start_time ) AS sum_time, t.holiday_type
+FROM `checkin_dairy` AS t
+INNER JOIN user ON user.id = t.user_id
+WHERE substr( t.checkin_date, 7, 4 ) =2013
+AND t.user_id =5
+GROUP BY cdate
+HAVING cdate
+BETWEEN '2013-03-26'
+AND '2013-04-25'
+ORDER BY cdate
+LIMIT 0 , 30
+
+select t.user_id, user.username as Uname, str_to_date( t.checkin_date, "%d-%m-%Y" ) cdate, t.start_time, t.end_time, sum(t.end_time - t.start_time) AS sum_time, t.holiday_type
+from checkin_dairy as t INNER JOIN user ON user.id = t.user_id
+where substr(t.checkin_date, 7, 4) =2013 and t.user_id =5
+group by cdate
+having cdate BETWEEN '2013-3-26' AND '2013-3-25'
+order by cdate
+
+
+26/3 -> 25/4
+6 + 25 = 31
